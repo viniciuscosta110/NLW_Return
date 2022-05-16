@@ -5,9 +5,13 @@ import { ChatTeardropDots } from 'phosphor-react-native'
 import BottomSheet  from '@gorhom/bottom-sheet';
 
 import { Options } from '../Options';
+import { Form } from '../Form';
 
 import { theme } from '../../theme';
 import { styles } from './styles';
+import { feedbackTypes } from '../../utils/feedbackTypes'
+
+export type FeedbackType = keyof typeof feedbackTypes;
 
 export function Widget() {
   const bottomSheetRef = useRef<BottomSheet>(null)
@@ -18,8 +22,6 @@ export function Widget() {
 
   return (
     <>
-
-
       <TouchableOpacity style={styles.button} onPress={handleOpen}>
         <ChatTeardropDots 
           size={24} 
@@ -34,7 +36,7 @@ export function Widget() {
         backgroundStyle={styles.modal}
         handleIndicatorStyle={styles.indicator}
       >
-        <Options/>
+        <Form  feedbackType="BUG" />
       </BottomSheet>
     </>
   );
